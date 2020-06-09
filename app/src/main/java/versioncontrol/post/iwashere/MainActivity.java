@@ -28,8 +28,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-    //Variables
-    String s_lat, s_lon, s_altitude, s_accuracy, s_speed, s_sensor, s_updates, s_address;
 
 
     //Constants
@@ -37,13 +35,15 @@ public class MainActivity extends AppCompatActivity {
     public static final int FASTEST_UPDATE_INTERVAL = 5;
     private static final int PERMISIONS_FINE_LOCATIONS = 99;
 
+    private static String s_NA = "Not aivailable";
+    private static String s_NT = "Not tracking";
+
+
+
     //Reference UI elements
 
     TextView tv_lat, tv_lon, tv_altitude, tv_accuracy, tv_speed, tv_sensor, tv_updates, tv_address;
     Switch sw_locationsupdate, sw_gps;
-
-    //Variable to remember if we are tracking or not
-    Boolean updateOn = false;
 
 
     //Location Request is a config file for FusedLocationProviderClient
@@ -161,14 +161,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void stopLocationUpdates() {
-        tv_updates.setText("Not tracking");
-        tv_lat.setText("Not tracking");
-        tv_lon.setText("Not tracking");
-        tv_accuracy.setText("Not tracking");
-        tv_speed.setText("Not tracking");
-        tv_altitude.setText("Not tracking");
-        tv_sensor.setText("Not tracking");
-        tv_address.setText("Not tracking");
+        tv_updates.setText(s_NT);
+        tv_lat.setText(s_NT);
+        tv_lon.setText(s_NT);
+        tv_accuracy.setText(s_NT);
+        tv_speed.setText(s_NT);
+        tv_altitude.setText(s_NT);
+        tv_sensor.setText(s_NT);
+        tv_address.setText(s_NT);
 
         fusedLocationProviderClient.removeLocationUpdates(locationCallback);
 
@@ -238,14 +238,14 @@ public class MainActivity extends AppCompatActivity {
             tv_altitude.setText(String.valueOf(location.getAccuracy()));
 
         } else {
-            tv_altitude.setText("Not available");
+            tv_altitude.setText(s_NA);
         }
 
         if(location.hasSpeed()){
             tv_speed.setText(String.valueOf(location.getAccuracy()));
 
         } else {
-            tv_speed.setText("Not available");
+            tv_speed.setText(s_NA);
         }
 
 
@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
             //explorar més paràmetes ex, pais, codi postal...
 
         } catch (Exception e){
-            tv_address.setText("Not available");
+            tv_address.setText(s_NA);
 
 
         }
