@@ -27,6 +27,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    //Variables
+    String s_lat, s_lon, s_altitude, s_accuracy, s_speed, s_sensor, s_updates, s_address;
+
+
     //Constants
     public static final int DEFAULT_UPDATE_INTERVAL = 30;
     public static final int FASTEST_UPDATE_INTERVAL = 5;
